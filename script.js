@@ -13,8 +13,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-let employeeData = [];
-
 function nextStep(step) {
     document.querySelectorAll('.form-step').forEach(step => step.style.display = 'none');
     document.getElementById(`step-${step}`).style.display = 'block';
@@ -38,7 +36,7 @@ document.getElementById('employee-form').addEventListener('submit', function (e)
     const newEmployeeRef = database.ref('employees').push();
     newEmployeeRef.set(employee)
         .then(() => {
-            console.log('Employee data saved successfully.');
+            console.log('Employee data saved successfully:', employee);
             addEmployeeToTable(employee);
             alert('Employee data submitted!');
             // Reset form and go back to step 1
@@ -61,6 +59,7 @@ function addEmployeeToTable(employee) {
     });
 
     tableBody.appendChild(row);
+    console.log('Added employee to table:', employee);
 }
 
 function searchEmployee() {
@@ -83,7 +82,7 @@ function searchEmployee() {
 }
 
 // Fetch and display employee data from Firebase on page load
-window.onload = function () {
+window.onload = function() {
     database.ref('employees').on('value', (snapshot) => {
         const employees = snapshot.val();
         const tableBody = document.querySelector('#employee-data-table tbody');
@@ -91,5 +90,6 @@ window.onload = function () {
         for (const id in employees) {
             addEmployeeToTable(employees[id]);
         }
+        console.log('Loaded employee data from Firebase:', employees);
     });
 };
