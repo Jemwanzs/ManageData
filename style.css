@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    background-color: #f0f0f0;
+}
+
+.Container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #85d7e2;
+    overflow-y: auto;
+}
+
+.FormWrapper {
+    margin-top: 20px;
+    background: #178dd1;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.FormWrapper form {
+    display: flex;
+    flex-direction: column;
+}
+
+.FormWrapper form .FormRow {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.FormWrapper form .FormItem {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.FormWrapper form .FormItem:last-child {
+    margin-right: 0;
+}
+
+.FormWrapper form .FormItem label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.FormWrapper form .FormItem input {
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.FormWrapper form .Buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.FormWrapper form button {
+    padding: 5px 15px;
+    font-size: 18px;
+    color: #151d88;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    /*box-shadow: 3px 3px 5px #f0f0f0, -3px -3px 5px rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;*/
+    width: auto;
+    display: inline-block;
+}
+
+/*.FormWrapper form button:hover {
+    background-color: #e0e0e0;
+    box-shadow: 5px 5px 7px #f0f0f0, -5px -5px 7px rgba(255, 255, 255, 0.6);
+}*/
+
+.Results {
+    background: #333;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 1600px;
+    color: yellow;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.Results h2 {
+    margin-bottom: 10px;
+}
+
+.Results table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.Results table tr th,
+.Results table tr td {
+    padding: 10px;
+    border-bottom: 1px solid #555;
+    color: #fff;
+}
+
+.Results table tr td:last-child {
+    text-align: right;
+}
+
+@media (max-width: 600px) {
+    .Results {
+        font-size: 14px;
+    }
+}
+
+/* Styles for search bar */
+.SearchBar {
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    /*box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);*/
+}
+
+.SearchBar label {
+    font-size: 18px;
+    color: #333;
+    margin-right: 10px;
+    align-self: center;
+}
+
+.SearchBar input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: inset -2px -2px 5px gray, inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.SearchBar input::placeholder {
+    color: #aaa;
+}
+
+.Owner {
+    font-size: 10px;
+    font-style: italic;
+    color: aqua;
+}

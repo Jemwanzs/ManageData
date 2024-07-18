@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Data Entry by James Sammy</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+</head>
+
+<body>
+    <div class="Container">
+        <div class="FormWrapper">
+            <form id="employee-form">
+                <!-- Step 1: Personal Information -->
+                <div id="step-1" class="form-step">
+                    <h2>Personal Information</h2>
+                    <h2 class="Owner">By JMS</h2>
+                    <div class="FormRow">
+                        <div class="FormItem">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="FormItem">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="FormRow">
+                        <div class="FormItem">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="FormItem">
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="Buttons">
+                        <button type="button" onclick="nextStep(2)">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Contract Details -->
+                <div id="step-2" class="form-step" style="display:none;">
+                    <h2>Contract Details</h2>
+                    <h2 class="Owner">By JMS</h2>
+                    <div class="FormRow">
+                        <div class="FormItem">
+                            <label for="contractType">Contract Type</label>
+                            <input type="text" id="contractType" name="contractType" required>
+                        </div>
+                        <div class="FormItem">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                    </div>
+                    <div class="FormRow">
+                        <div class="FormItem">
+                            <label for="endDate">End Date</label>
+                            <input type="date" id="endDate" name="endDate">
+                        </div>
+                        <div class="FormItem">
+                            <label for="salary">Salary</label>
+                            <input type="number" id="salary" name="salary" required>
+                        </div>
+                    </div>
+                    <div class="Buttons">
+                        <button type="button" onclick="prevStep(1)">Previous</button>
+                        <button type="button" onclick="nextStep(3)">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Next of Kin Details -->
+                <div id="step-3" class="form-step" style="display:none;">
+                    <h2>Next of Kin Details</h2>
+                    <h2 class="Owner">By JMS</h2>
+                    <div class="FormRow">
+                        <div class="FormItem">
+                            <label for="kinName">Name</label>
+                            <input type="text" id="kinName" name="kinName">
+                        </div>
+                        <div class="FormItem">
+                            <label for="kinRelationship">Relationship</label>
+                            <input type="text" id="kinRelationship" name="kinRelationship">
+                        </div>
+                    </div>
+                    <div class="FormRow">
+                        <div class="FormItem">
+                            <label for="kinPhone">Phone</label>
+                            <input type="text" id="kinPhone" name="kinPhone">
+                        </div>
+                        <div class="FormItem">
+                            <label for="kinEmail">Email</label>
+                            <input type="email" id="kinEmail" name="kinEmail">
+                        </div>
+                    </div>
+                    <div class="Buttons">
+                        <button type="button" onclick="prevStep(2)">Previous</button>
+                        <button type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Search bar for employee data -->
+        <div class="SearchBar">
+            <label for="search">Search by First Name:</label>
+            <input type="text" id="search" onkeyup="searchEmployee()">
+        </div>
+
+        <!-- Table to display submitted data -->
+        <div class="Results">
+            <h2>Employee Data</h2>
+            <table id="employee-data-table">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Contract Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Salary</th>
+                        <th>Next of Kin Name</th>
+                        <th>Next of Kin Relationship</th>
+                        <th>Next of Kin Phone</th>
+                        <th>Next of Kin Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
