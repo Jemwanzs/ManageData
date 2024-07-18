@@ -36,14 +36,18 @@ document.getElementById('employee-form').addEventListener('submit', function (e)
 
     // Save employee data to Firebase
     const newEmployeeRef = database.ref('employees').push();
-    newEmployeeRef.set(employee);
-
-    addEmployeeToTable(employee);
-    alert('Employee data submitted!');
-
-    // Reset form and go back to step 1
-    e.target.reset();
-    nextStep(1);
+    newEmployeeRef.set(employee)
+        .then(() => {
+            console.log('Employee data saved successfully.');
+            addEmployeeToTable(employee);
+            alert('Employee data submitted!');
+            // Reset form and go back to step 1
+            e.target.reset();
+            nextStep(1);
+        })
+        .catch((error) => {
+            console.error('Error saving employee data:', error);
+        });
 });
 
 function addEmployeeToTable(employee) {
@@ -78,12 +82,14 @@ function searchEmployee() {
     }
 }
 
-// Fetch and display employee data from Firebase
-database.ref('employees').on('value', (snapshot) => {
-    const employees = snapshot.val();
-    const tableBody = document.querySelector('#employee-data-table tbody');
-    tableBody.innerHTML = ''; // Clear existing data
-    for (const id in employees) {
-        addEmployeeToTable(employees[id]);
-    }
-});
+// Fetch and display employee data from Firebase on page load
+window.onload = function () {
+    database.ref('employees').on('value', (snapshot) => {
+        const employees = snapshot.val();
+        const tableBody = document.querySelector('#employee-data-table tbody');
+        tableBody.innerHTML = ''; // Clear existing data
+        for (const id in employees) {
+            addEmployeeToTable(employees[id]);
+        }
+    });
+};
